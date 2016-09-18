@@ -1,0 +1,66 @@
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  citecolor=black,
+  filecolor=black,
+  linkcolor=black!50,
+  urlcolor=black,
+  linktoc=all,
+}
+\usepackage{tikz}
+\tikzset{
+  % Styling of header text is done using key/value options for TikZ nodes. See
+  % section 16.4 of the PGF manual for a complete list of options that affect
+  % text.
+  headings/base/.style = {
+    % Zap node seperation, set text width and alignment.
+    outer sep = 0pt,
+    % Trim off 2/3rd of an em to compensate for the inner xsep which spaces the
+    % text nicely away from the left side, but causes the node to hang into the
+    % right margin.
+    text width = {\textwidth - 0.6666em},
+    align = left,
+    text = white,
+  },
+  headings/section/.style = {
+    headings/base,
+    fill = blue!50,
+    font = \sffamily\Large
+  },
+  headings/subsection/.style = {
+    headings/base,
+    fill = blue!25,
+    font = \sffamily\large
+  }
+}
+
+\newcommand{\colorboxedsec}[2]{%
+  \tikz{\node[headings/#1]{#2};}}
+
+\setkomafont{section}{\colorboxedsec{section}}
+\setkomafont{subsection}{\colorboxedsec{subsection}}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\newtheorem{theorem}{Theorem}
+\newcounter{ProblemNum}
+\newcounter{SubProblemNum}[ProblemNum]
+\renewcommand{\theProblemNum}{\arabic{ProblemNum}}
+\renewcommand{\theSubProblemNum}{\alph{SubProblemNum}}
+\newcommand*{\anyproblem}[1]{\subsubsection*{#1}}
+\newcommand*{\problem}[1]{\stepcounter{ProblemNum} %
+\anyproblem{Problem \theProblemNum. \; #1}}
+\newcommand*{\soln}[1]{\subsubsection*{#1}}
+\newcommand*{\solution}{\soln{Solution}}
+\renewcommand*{\part}{\stepcounter{SubProblemNum} %
+\soln{Part (\theSubProblemNum)}}
+\renewcommand{\theenumi}{(\alph{enumi})}
+\renewcommand{\labelenumi}{\theenumi}
+\renewcommand{\theenumii}{\roman{enumii}}
+\parindent 0in
+\parskip 0.5em
+\newcommand{\arrow}{$\rightarrow $}
+\usetikzlibrary{shapes.geometric}
+\usetikzlibrary{decorations.text}

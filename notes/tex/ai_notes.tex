@@ -1,0 +1,37 @@
+% Meta
+\documentclass{scrartcl}
+\input{tex/style.tex}
+% Content
+\title{AI Notes}
+\author{
+  -- ForeverRecompin\\
+  \href{mailto:foreverrecompin@gmail.com}{foreverrecompin@gmail.com}
+}
+\date{2016-09-18}
+\begin{document}
+\maketitle
+\clearpage
+\tableofcontents
+\addtocontents{toc}{\protect\hypertarget{toc}{}}
+\clearpage
+% Add tex files like so:
+% \input{tex/filename.tex}
+% Add links like so:
+% Go to \hyperlink{toc}{Table of Contents}.
+\section{Basics}
+\begin{itemize}
+\item An A.I. program is an \emph{intelligent agent}. An \emph{intelligent agent} interacts with an \emph{environment}, \emph{perceiving} it's state through it's \textbf{sensors} and \emph{affecting} it's state through it's \textbf{actuators}. The question that A.I. aims to answer is the \textbf{function/control policy} that \emph{maps} sensors and actuators.
+\item The \textbf{perception-action} cycle is the closed loop formed by: environment giving feedback through sensors, the agent taking decisions and then the actuator realizing them.
+\end{itemize}
+\begin{figure}[!h]
+  \centering
+  \begin{tikzpicture}[square/.style={regular polygon,regular polygon sides=4}]
+    \node at (0,0) [square,draw,red,dashed] (square) {I. Agent};
+    \node at (9,0) [circle,draw] (circle) {Environment};
+    \def\myshift#1{\raisebox{-2.5ex}}
+    \draw [<-,thick,postaction={decorate,decoration={text along path,text align=center,text={|\sffamily\myshift|Sensors}}}] (square) to [bend right=45] (circle);
+    \def\myshift#1{\raisebox{1ex}}
+    \draw [->,thick,postaction={decorate,decoration={text along path,text align=center,text={|\sffamily\myshift|Actuators}}}] (square) to [bend left=45] (circle);
+  \end{tikzpicture}
+\end{figure}
+\end{document}
